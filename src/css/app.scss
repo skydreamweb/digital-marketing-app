@@ -1,0 +1,24 @@
+// app global css in SCSS form
+.q-tab__label, .q-tab__icon {
+    padding: 0.2rem;
+  }
+  .bordered-banners {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 1rem;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .custom-footer {
+      display: block;
+    }
+    .display-none {
+      display: none;
+    }
+    .q-btn__wrapper {
+      padding: 4px 4px;
+    }
+    button .q-ma-sm {
+      margin: 0px 8px;
+  }
+  }
