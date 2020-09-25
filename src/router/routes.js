@@ -23,6 +23,10 @@ const routes = [
         path: "/facebook", 
         component: () => import("pages/Facebook.vue") 
       },
+      { 
+        path: "/google", 
+        component: () => import("pages/Google.vue") 
+      },
     ]
   },
 

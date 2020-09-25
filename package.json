@@ -11,8 +11,10 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
+    "chart.js": "^2.9.3",
+    "chartjs-plugin-labels": "^1.1.0",
     "core-js": "^3.6.5",
-    "firebase": "^7.20.0",
+    "firebase": "^7.21.1",
     "quasar": "^1.0.0"
   },
   "devDependencies": {
