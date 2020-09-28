@@ -34,7 +34,7 @@ const state = {
       title: "Pinterest",
       caption: "Stats",
       icon: "fab fa-pinterest",
-      link: "/twitter"
+      link: "/pinterest"
     },
     {
       title: "Tiktok",
@@ -46,7 +46,7 @@ const state = {
       title: "Woocommerce",
       caption: "Stats",
       icon: "fab fa-wordpress",
-      link: "/wordpress"
+      link: "/woo"
     },
     {
       title: "Shopify",
@@ -58,7 +58,7 @@ const state = {
       title: "MailChimp",
       caption: "Stats",
       icon: "fab fa-mailchimp",
-      link: "/twitter"
+      link: "/mailchimp"
     },
     {
       title: "Klaviyo",

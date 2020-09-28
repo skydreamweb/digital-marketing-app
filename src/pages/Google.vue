@@ -2,7 +2,7 @@
   <div>
     <div class="text-h4 q-py-lg text-center">Google Analytics</div>
     <div class="row justify-center q-pa-lg">
-      <div class="col-xl-4 col-lg-6 col-md-6 col-sm-10 col-xs-12 q-pa-sm">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-12 q-pa-sm">
         <q-card class="bg-white full-width">
           <q-card-section class="bg-blue-grey-8">
             <div class="row items-center no-wrap">
@@ -11,12 +11,12 @@
               </div>
             </div>
           </q-card-section>
-          <q-card-section>
+          <q-card-section style="width:100%; height: 50vh;">
             <canvas id="pie-chart"></canvas>
           </q-card-section>
         </q-card>
       </div>
-      <div class="col-xl-4 col-lg-6 col-md-6 col-sm-10 col-xs-12 q-pa-sm">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-12 q-pa-sm">
         <q-card class="bg-white full-width">
           <q-card-section class="bg-blue-grey-8">
             <div class="row items-center no-wrap">
@@ -27,26 +27,26 @@
               </div>
             </div>
           </q-card-section>
-          <q-card-section>
+          <q-card-section style="width:100%; height: 50vh;">
             <canvas id="horizontal-bar-chart"></canvas>
           </q-card-section>
         </q-card>
       </div>
-      <div class="col-xl-4 col-lg-6 col-md-6 col-sm-10 col-xs-12 q-pa-sm">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-12 q-pa-sm">
         <q-card class="bg-white full-width">
           <q-card-section class="bg-blue-grey-8">
             <div class="row items-center no-wrap">
               <div class="col">
-                <div class="text-h6 text-white text-center">Pages</div>
+                <div class="text-h6 text-white text-center">Bounce rate</div>
               </div>
             </div>
           </q-card-section>
-          <q-card-section>
-            <canvas id="bubble-chart"></canvas>
+          <q-card-section style="width:100%; height: 50vh;">
+            <canvas id="pies-chart"></canvas>
           </q-card-section>
         </q-card>
       </div>
-      <div class="col-xl-4 col-lg-6 col-md-6 col-sm-10 col-xs-12 q-pa-sm">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-xs-12 q-pa-sm">
         <q-card class="bg-white full-width">
           <q-card-section class="bg-blue-grey-8">
             <div class="row items-center no-wrap">
@@ -55,7 +55,7 @@
               </div>
             </div>
           </q-card-section>
-          <q-card-section>
+          <q-card-section style="width:100%; height: 50vh;">
             <canvas id="radar-chart"></canvas>
           </q-card-section>
         </q-card>
@@ -75,7 +75,7 @@ export default {
   mounted() {
     this.createPie("pie-chart");
     this.createHorizontal("horizontal-bar-chart");
-    this.createBubble("bubble-chart");
+    this.createPies("pies-chart");
     this.createRadar("radar-chart");
   },
   methods: {
@@ -94,6 +94,8 @@ export default {
           ]
         },
         options: {
+          responsive: true,
+          maintainAspectRatio: false,
           plugins: {
             labels: [
               {
@@ -136,6 +138,8 @@ export default {
           ]
         },
         options: {
+          responsive: true,
+          maintainAspectRatio: false,
           legend: {
             display: false
           },
@@ -149,74 +153,65 @@ export default {
       });
       return myChart;
     },
-    createBubble(chartId) {
-      const ctx = document.getElementById(chartId)
+    createPies(chartId) {
+      const ctx = document.getElementById(chartId);
       const myChart = new Chart(ctx, {
-        type: 'bubble',
+        type: "doughnut",
         data: {
-          labels: 'TSF',
           datasets: [
             {
-              label: ['/home'],
-              backgroundColor: 'rgba(255,221,50,0.2)',
-              borderColor: 'rgba(255,221,50,1)',
-              data: [{
-                x: 21269017,
-                y: 5.245,
-                r: 15
-              }]
-            }, {
-              label: ['/blog'],
-              backgroundColor: 'rgba(60,186,159,0.2)',
-              borderColor: 'rgba(60,186,159,1)',
-              data: [{
-                x: 258702,
-                y: 7.526,
-                r: 10
-              }]
-            }, {
-              label: ['/shop'],
-              backgroundColor: 'rgba(0,0,0,0.2)',
-              borderColor: '#000',
-              data: [{
-                x: 3979083,
-                y: 6.994,
-                r: 15
-              }]
-            }, {
-              label: ['/collection'],
-              backgroundColor: 'rgba(193,46,12,0.2)',
-              borderColor: 'rgba(193,46,12,1)',
-              data: [{
-                x: 4931877,
-                y: 5.921,
-                r: 15
-              }]
+              label: "Bounce rate",
+              percent: 58,
+              backgroundColor: ["#5283ff"]
             }
           ]
         },
-        options: {
-          title: {
-            display: true,
-            text: 'Most visited pages in past 24 hours'
+        plugins: [
+          {
+            beforeInit: chart => {
+              const dataset = chart.data.datasets[0];
+              chart.data.labels = [dataset.label];
+              dataset.data = [dataset.percent, 100 - dataset.percent];
+            }
           },
-          scales: {
-            yAxes: [{
-              scaleLabel: {
-                display: true,
-                labelString: 'How many seconds'
-              }
-            }],
-            xAxes: [{
-              scaleLabel: {
-                display: true,
-                labelString: 'How many visits'
-              }
-            }]
+          {
+            beforeDraw: chart => {
+              var width = chart.chart.width,
+                height = chart.chart.height,
+                ctx = chart.chart.ctx;
+              ctx.restore();
+              var fontSize = (height / 150).toFixed(2);
+              ctx.font = fontSize + "em sans-serif";
+              ctx.fillStyle = "#9b9b9b";
+              ctx.textBaseline = "middle";
+              var text = chart.data.datasets[0].percent + "%",
+                textX = Math.round((width - ctx.measureText(text).width) / 2),
+                textY = height / 2;
+              ctx.fillText(text, textX, textY);
+              ctx.save();
+            }
+          }
+        ],
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutoutPercentage: 45,
+          rotation: Math.PI / 2,
+          plugins: {
+            labels: false
+          }, 
+          datalabels: {
+            display: false
+          },
+          legend: {
+            display: false
+          },
+          tooltips: {
+            filter: tooltipItem => tooltipItem.index == 0
           }
         }
-      })
-      return myChart
+      });
+      return myChart;
     },
     createRadar(chartId) {
       const ctx = document.getElementById(chartId);
@@ -238,6 +233,8 @@ export default {
           ]
         },
         options: {
+          responsive: true,
+          maintainAspectRatio: false,
           legend: {
             display: false
           },
@@ -250,12 +247,13 @@ export default {
         }
       });
       return myChart;
-    },
-    
+    }
   }
 };
 </script>
 
-<style></style>
-
-<style lang="scss" scoped></style>
+<style lang="scss">
+.wrapper {
+  height: 500px !important;
+}
+</style>

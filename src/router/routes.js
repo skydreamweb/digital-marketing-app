@@ -27,6 +27,42 @@ const routes = [
         path: "/google", 
         component: () => import("pages/Google.vue") 
       },
+      { 
+        path: "/instagram", 
+        component: () => import("pages/Instagram.vue") 
+      },
+      { 
+        path: "/linkedin", 
+        component: () => import("pages/Linkedin.vue") 
+      },
+      { 
+        path: "/pinterest", 
+        component: () => import("pages/Pinterest.vue") 
+      },
+      { 
+        path: "/tiktok", 
+        component: () => import("pages/Tiktok.vue") 
+      },
+      { 
+        path: "/woo", 
+        component: () => import("pages/Woo.vue") 
+      },
+      { 
+        path: "/shopify", 
+        component: () => import("pages/Shopify.vue") 
+      },
+      { 
+        path: "/mailchimp", 
+        component: () => import("pages/Mailchimp.vue") 
+      },
+      { 
+        path: "/klaviyo", 
+        component: () => import("pages/Klaviyo.vue") 
+      },
+      { 
+        path: "/twitter", 
+        component: () => import("pages/Twitter.vue") 
+      },
     ]
   },
 
