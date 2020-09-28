@@ -101,11 +101,13 @@ export default {
               {
                 render: "label",
                 position: "outside",
+                fontSize: 20,
                 fontColor: "#000"
               },
               {
                 render: "value",
-                fontColor: "#fff"
+                fontColor: "#fff",
+                fontSize: 26
               }
             ]
           },
