@@ -67,6 +67,8 @@
 <script>
 import Chart from "chart.js";
 import labels from "chartjs-plugin-labels";
+
+
 export default {
   name: "Google",
   data() {

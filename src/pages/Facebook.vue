@@ -7,10 +7,9 @@
           <div class="text-h5 text-center">Page Likes</div>
           <q-circular-progress
             show-value
-            font-size="4rem"
             class="text-red q-ma-md"
             :value="value"
-            size="18rem"
+            size="12rem"
             :thickness="0.25"
             color="blue"
             track-color="grey-3"
@@ -23,10 +22,9 @@
           <div class="text-h5 text-center">Page Views</div>
           <q-circular-progress
             show-value
-            font-size="4rem"
             class="text-red q-ma-md"
             :value="value"
-            size="18rem"
+            size="12rem"
             :thickness="0.25"
             color="green"
             track-color="grey-3"
@@ -39,10 +37,9 @@
           <div class="text-h5 text-center">Post Reach</div>
           <q-circular-progress
             show-value
-            font-size="4rem"
             class="text-red q-ma-md"
             :value="value"
-            size="18rem"
+            size="12rem"
             :thickness="0.25"
             color="pink"
             track-color="grey-3"
@@ -55,10 +52,9 @@
           <div class="text-h5 text-center">Post engagement</div>
           <q-circular-progress
             show-value
-            font-size="4rem"
             class="text-red q-ma-md"
             :value="value"
-            size="18rem"
+            size="12rem"
             :thickness="0.25"
             color="brown"
             track-color="grey-3"
