@@ -14,7 +14,8 @@
     "chart.js": "^2.9.3",
     "chartjs-plugin-labels": "^1.1.0",
     "core-js": "^3.6.5",
-    "firebase": "^7.21.1",
+    "express": "^4.17.1",
+    "firebase": "^7.22.1",
     "quasar": "^1.0.0"
   },
   "devDependencies": {

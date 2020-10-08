@@ -22,6 +22,7 @@
             color="white"
             text-color="black"
             :label="$q.screen.gt.sm ? 'About' : void 0"
+            href="https://thesocialformula.net"
           />
 
           <q-btn
@@ -147,6 +148,10 @@ export default {
 }
 .q-btn {
     padding: 2px 2px;
+}
+.q-page-container {
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 </style>
